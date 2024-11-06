@@ -1,8 +1,8 @@
 (function(window) {
     'use strict';
-    var FORM_SELECTOR = '[data-coffee-order="form"]';
-    var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]';
-    var SERVER_URL = 'http://coffeerun-v1-rest-api.herokuapp.com/api/coffeeorders/';
+    var FORM_SELECTOR = '[data-boba-order="form"]';
+    var CHECKLIST_SELECTOR = '[data-boba-order="checklist"]';
+    var SERVER_URL = 'http://coffeerun-v1-rest-api.herokuapp.com/api/coffeeorders/';  
   
     var App = window.App;
     var Truck = App.Truck;

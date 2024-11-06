@@ -12,18 +12,18 @@
         throw new Error('Could not find element with selector: ' + selector);
       }
     }
-    CheckList.prototype.addRow = function(coffeeOrder) {
+    CheckList.prototype.addRow = function(bobaOrder) {
       // remove any existing rows that match the email address
-      this.removeRow(coffeeOrder.email);
+      this.removeRow(bobaOrder.email);
       // create a new instance of a row, using the coffee order info
-      var rowElement = new Row(coffeeOrder);
+      var rowElement = new Row(bobaOrder);
       // add the new row instance's $element property to the checklist
       this.$element.append(rowElement.$element);
     };
     CheckList.prototype.removeRow = function(email) {
       this.$element
         .find('[value="' + email + '"]')
-        .closest('[data-coffee-order="checkbox"]')
+        .closest('[data-boba-order="checkbox"]')
         .empty();
     };
     CheckList.prototype.addClickHandler = function(fn) {
@@ -39,9 +39,9 @@
       }.bind(this));
     };
   
-    function Row(coffeeOrder) {
+    function Row(bobaOrder) {
       var $div = $('<div/>', {
-        'data-coffee-order': 'checkbox',
+        'data-boba-order': 'checkbox',
         class: 'checkbox'
       });
   
@@ -49,16 +49,16 @@
   
       var $checkbox = $('<input></input>', {
         type: 'checkbox',
-        value: coffeeOrder.email
+        value: bobaOrder.email
       });
   
-      var description = coffeeOrder.size + ' ';
-      if (coffeeOrder.flavor) {
-        description += coffeeOrder.flavor + ' ';
+      var description = bobaOrder.size + ' ';
+      if (bobaOrder.flavor) {
+        description += bobaOrder.flavor + ' ';
       }
-      description += coffeeOrder.coffee + ', ';
-      description += ' (' + coffeeOrder.email + ')';
-      description += ' [' + coffeeOrder.strength + 'x]';
+      description += bobaOrder.boba + ', ';
+      description += ' (' + bobaOrder.email + ')';
+      description += ' [' + bobaOrder.sweetness + 'sweetness]';
   
       $label.append($checkbox);
       $label.append(description);

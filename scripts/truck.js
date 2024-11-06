@@ -7,18 +7,18 @@
       this.db = db;
     }
     Truck.prototype.createOrder = function(order) {
-      console.log('Adding order for ' + order.email);
+      console.log('Adding Boba order for ' + order.email);
       return this.db.add(order.email, order);
     };
     Truck.prototype.deliverOrder = function(customerId) {
-      console.log('Delivering order for ' + customerId);
+      console.log('Delivering Boba order for ' + customerId);
       return this.db.remove(customerId);
     };
     Truck.prototype.printOrders = function(printFn) {
       this.db.getAll()
         .then(function(allData) {
           var customerIdArray = Object.keys(allData);
-          console.log('Truck #' + this.truckId + ' has pending orders:');
+          console.log('Truck #' + this.truckId + ' has pending Boba orders:');
           customerIdArray.forEach(function(id) {
             console.log(allData[id]);
             if (printFn) {

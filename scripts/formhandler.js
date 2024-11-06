@@ -19,11 +19,11 @@
           event.preventDefault();
   
           var data = {
-            coffee: this.elements.coffee.value,
+            boba: this.elements.boba.value,
             email: this.elements.emailAddress.value,
             size: this.elements.size.value,
             flavor: this.elements.flavor.value,
-            strength: this.elements.strength.value
+            sweetness: this.elements.sweetness.value
           };
           console.log(data);
           fn(data)
