@@ -52,13 +52,13 @@
         value: bobaOrder.email
       });
   
-      var description = bobaOrder.size + ' ';
+      var description = bobaOrder.type + ' ';
       if (bobaOrder.flavor) {
         description += bobaOrder.flavor + ' ';
       }
       description += bobaOrder.boba + ', ';
       description += ' (' + bobaOrder.email + ')';
-      description += ' [' + bobaOrder.sweetness + 'sweetness]';
+      description += ' [' + bobaOrder.sweetness + '% Sweetness]';
   
       $label.append($checkbox);
       $label.append(description);

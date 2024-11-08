@@ -21,7 +21,7 @@
           var data = {
             boba: this.elements.boba.value,
             email: this.elements.emailAddress.value,
-            size: this.elements.size.value,
+            type: this.elements.type.value,
             flavor: this.elements.flavor.value,
             sweetness: this.elements.sweetness.value
           };
