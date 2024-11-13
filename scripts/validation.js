@@ -3,7 +3,7 @@
     var App = window.App || {};
     var Validation = {
       isCompanyEmail: function(email) {
-        return /@fullerton\.edu$/.test(email);
+        return /.+@fullerton\.edu$/.test(email);
       }
     };
     App.Validation = Validation;

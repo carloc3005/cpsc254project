@@ -14,7 +14,7 @@
     }
     CheckList.prototype.addRow = function(bobaOrder) {
       // remove any existing rows that match the email address
-      this.removeRow(bobaOrder.email);
+      this.removeRow(bobaOrder.emailAddress);
       // create a new instance of a row, using the coffee order info
       var rowElement = new Row(bobaOrder);
       // add the new row instance's $element property to the checklist
@@ -24,16 +24,15 @@
       this.$element
         .find('[value="' + email + '"]')
         .closest('[data-boba-order="checkbox"]')
-        .empty();
+        .remove();
     };
     CheckList.prototype.addClickHandler = function(fn) {
       this.$element.on('click', 'input', function(event) {
         // Why not preventDefault here?
         // Because it would prevent the item from being checked.
-        fn(event.target.value)
-          .then(function() {
-            this.removeRow(event.target.value);
-          }.bind(this));
+        var email = event.target.value;
+        this.removeRow(email);
+        fn(email);
         // yep. need `.bind` after this one, otherwise
         // jQuery sets `this` to the `input` and not the instance of `CheckList`
       }.bind(this));
@@ -49,7 +48,7 @@
   
       var $checkbox = $('<input></input>', {
         type: 'checkbox',
-        value: bobaOrder.email
+        value: bobaOrder.emailAddress
       });
   
       var description = bobaOrder.type + ' ';
@@ -57,7 +56,7 @@
         description += bobaOrder.flavor + ' ';
       }
       description += bobaOrder.boba + ', ';
-      description += ' (' + bobaOrder.email + ')';
+      description += ' (' + bobaOrder.emailAddress + ')';
       description += ' [' + bobaOrder.sweetness + '% Sweetness]';
   
       $label.append($checkbox);
