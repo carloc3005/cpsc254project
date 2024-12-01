@@ -121,14 +121,71 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    cartItemsContainer.addEventListener("click", (e) => {
-        if (e.target.classList.contains("delete-button")) {
-            const index = e.target.dataset.index;
-            cart.splice(index, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            renderCartItems();
-        }
-    });
+    if (cartItemsContainer) {
+        cartItemsContainer.addEventListener("click", (e) => {
+            if (e.target.classList.contains("delete-button")) {
+                const index = e.target.dataset.index;
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCartItems();
+            }
+        });
+    } else {
+        console.error('Cart items container not found');
+    }
+
+    // Add event listener for the checkout button
+    const checkoutButton = document.getElementById("checkout-button");
+    if (checkoutButton) {
+        checkoutButton.addEventListener("click", () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            // Generate a 4-digit random order number
+            const orderNumber = Math.floor(1000 + Math.random() * 9000);
+            console.log("Generated Order Number:", orderNumber);
+
+            // Prepare the order data
+            const orderData = {
+                orderNumber: orderNumber,
+                items: cart,
+                total: totalElement ? parseFloat(totalElement.textContent) : 0
+            };
+
+            // Send the order data to the server
+            fetch('/submit-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+                    if (data.success) {
+                        // Clear the cart
+                        localStorage.removeItem('cart');
+
+                        // Redirect to the confirmation page with the order number
+                        window.location.href = `confirmation.html?orderNumber=${orderNumber}`;
+                    } else {
+                        alert('There was an error processing your order. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // For testing purposes, proceed to the confirmation page even if there's an error
+                    // In production, handle the error appropriately
+                    // alert('There was an error processing your order. Please try again.');
+                    window.location.href = `confirmation.html?orderNumber=${orderNumber}`;
+                });
+        });
+    } else {
+        console.error('Checkout button not found');
+    }
 
     renderCartItems();
 });

@@ -184,3 +184,49 @@ header {
         margin: 1.5rem 0;
     }
 }
+
+/* Confirmation Page Styles */
+.confirmation-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.confirmation-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.confirmation-container p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.confirmation-container .home-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff4500;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.confirmation-container .home-link:hover {
+    background-color: #e03e00;
+}
+
+.image-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.confirmation-icon {
+    width: 64px;
+    height: auto;
+}
+
+
