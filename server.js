@@ -27,8 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/submit-order', async (req, res) => {
     try {
         console.log('Order received:', req.body); // Log the entire request body to debug
-        console.log('User name:', req.body.userName); // Specifically log userName
-        console.log('User phone:', req.body.userPhone); // Specifically log userPhone
 
         const newOrder = new Order(req.body);
         await newOrder.save();
