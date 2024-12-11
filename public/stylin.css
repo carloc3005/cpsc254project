@@ -1,6 +1,6 @@
 body {
     background: url('Drinks/boba1.png') no-repeat center center fixed;
-    background-size: cover;
+    background-size: cover; /* Covers full background */
     margin: 0;
     font-family: Arial, sans-serif;
 }
@@ -13,6 +13,7 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+/* style for the logo */
 .logo {
     display: flex;
     align-items: center;
@@ -32,6 +33,7 @@ header {
     color: #ffffff;
 }
 
+/* style for the cart */
 .cart-title {
     text-align: center;
     font-size: 2.5rem;
@@ -103,6 +105,7 @@ header {
     border-radius: 4px;
 }
 
+/* style for the delete button */
 .delete-button {
     background-color: #e74c3c;
     color: white;
@@ -119,6 +122,7 @@ header {
     background-color: #c0392b;
 }
 
+/* style for the total */
 .cart-total {
     margin-top: 1rem;
     background-color: #fff;
@@ -133,6 +137,7 @@ header {
     color: #333;
 }
 
+/* style for the checkout button */
 .checkout-button-container {
     text-align: center;
     margin-top: 1.5rem;
